@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "9ac8728d-1693-4268-8134-82ce34ce5632",
+		"name": "Appsflyer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27905876"
+	},
+	"item": [
+		{
+			"name": "Get lyrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/lyrics/?songName=asdasasdasd",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lyrics",
+						""
+					],
+					"query": [
+						{
+							"key": "songName",
+							"value": "asdasasdasd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get song name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/song?songName=test",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"song"
+					],
+					"query": [
+						{
+							"key": "songName",
+							"value": "test"
+						},
+						{
+							"key": "artist",
+							"value": "coldplay",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post song",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set (\"randomNum\", _.random (0,100));\r",
+							"// {{$randomAlphaNumeric}}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"songName\": \"teste\",\r\n    \"artist\": \"test\",\r\n    \"release_date\": 1994,\r\n    \"length\":3.522,\r\n    \"popularity\":74,\r\n    \"danceability\": 0.4222\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/song",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"song"
+					],
+					"query": [
+						{
+							"key": "songName",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "artist",
+							"value": "test",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getInsertJobStatus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/insertJobStatus?jobId=9a549e78-07ff-4809-969c-8eaead211e65",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"insertJobStatus"
+					],
+					"query": [
+						{
+							"key": "jobId",
+							"value": "9a549e78-07ff-4809-969c-8eaead211e65"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "randomNum",
+			"value": ""
+		}
+	]
+}
